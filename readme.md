@@ -2,6 +2,10 @@
 
 A small Laravel 5 package that let you remove a global middleware or bypass a route middleware in a testing environment.
 
+## Installation
+```
+composer require --dev "moon/fakemiddleware": "1.0"
+```
 ## Usage
 
 Open **TestCase.php**, which comes with L5 by default.
