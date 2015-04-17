@@ -17,7 +17,7 @@ class YouShallNotPass implements Middleware
 
     public function respondUnauthorized()
     {
-        return $this->response->json(['message' => 'Unauthorized']);
+        return $this->response->json(['message' => 'Unauthorized'], 403);
     }
 
     /**
@@ -26,6 +26,6 @@ class YouShallNotPass implements Middleware
      */
     public function handle($request, Closure $next)
     {
-        $this->respondUnauthorized();
+        return $this->respondUnauthorized();
     }
 }

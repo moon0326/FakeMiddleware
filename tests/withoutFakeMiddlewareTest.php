@@ -7,18 +7,18 @@ class withoutFakeMiddlewareTest extends TestCase
     /**
      * @test
      */
-    public function itShouldNotSuccess()
+    public function itShouldReturn403HTTPCodeForMiddleware()
     {
         $response = $this->call('GET', 'say-okay');
-        $this->assertNull($response);
+        $this->assertResponseStatus(403);
     }
 
     /**
      * @test
      */
-    public function itShouldNotByPassRouteMiddleware()
+    public function itShouldReturn403HTTPCodeForRouteMiddleware()
     {
         $response = $this->call('GET', 'say-hello');
-        $this->assertNull($response);
+        $this->assertResponseStatus(403);
     }
 }
