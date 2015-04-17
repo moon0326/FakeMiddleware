@@ -23,7 +23,7 @@ public function createApplication()
     $app = require __DIR__.'/../bootstrap/app.php';
     $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
 
-    // This will remove VerifyCsrfToken and repalce auth middleware
+    // This will remove ExternalOAuthVerifier and repalce auth middleware
     // with a fake middleware
     new FakeMiddleware($app, ['App\Http\Middleware\ExternalOAuthVerifier'], ['auth']);
 
