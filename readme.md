@@ -25,7 +25,7 @@ public function createApplication()
 
     // This will remove VerifyCsrfToken and repalce auth middleware
     // with a fake middleware
-    new FakeMiddleware($app, ['App\Http\Middleware\VerifyCsrfToken'], ['auth']);
+    new FakeMiddleware($app, ['App\Http\Middleware\ExternalOAuthVerifier'], ['auth']);
 
     return $app;
 }
