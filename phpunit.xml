@@ -3,7 +3,8 @@
 <phpunit bootstrap="vendor/autoload.php" colors="true">
     <testsuites>
         <testsuite name="Unit Test Suite">
-            <directory suffix=".php">tests/Unit</directory>
+            <file>./tests/withFakeMiddlewareTest.php</file>
+            <file>./tests/withoutFakeMiddlewareTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>

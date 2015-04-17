@@ -9,9 +9,9 @@
         }
     ],
     "require-dev": {
-        "laravel/framework": "5.0.*",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~4.0"
+        "phpunit/phpunit": "~4.0",
+        "orchestra/testbench": "3.0.6"
     },
     "require": {
          "php": ">=5.4.0"
@@ -20,6 +20,14 @@
     	"psr-4": {
     		"Moon\\FakeMiddleware\\": "src/"
     	}
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/FakeMiddlewareTest.php",
+            "tests/TestCase.php",
+            "tests/Middleware/YouShallNotPass.php",
+            "tests/Http/Kernel.php"
+        ]
     },
     "minimum-stability": "stable"
 }
