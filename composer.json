@@ -23,7 +23,8 @@
     },
     "autoload-dev": {
         "classmap": [
-            "tests/FakeMiddlewareTest.php",
+            "tests/withFakeMiddlewareTest.php",
+            "tests/withoutFakeMiddlewareTest.php",
             "tests/TestCase.php",
             "tests/Middleware/YouShallNotPass.php",
             "tests/Http/Kernel.php"
