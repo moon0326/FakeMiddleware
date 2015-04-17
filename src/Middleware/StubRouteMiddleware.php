@@ -2,11 +2,11 @@
 
 namespace Moon\FakeMiddleware\Middleware;
 
-use Clousre;
+use Closure;
 
 class StubRouteMiddleware
 {
-    public function handle($request, Clousre $next)
+    public function handle($request, Closure $next)
     {
         return $next($request);
     }

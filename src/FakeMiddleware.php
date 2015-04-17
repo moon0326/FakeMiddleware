@@ -3,11 +3,13 @@
 namespace Moon\FakeMiddleware;
 
 use Illuminate\Foundation\Application;
-use Illuminate\Contracts\Console\Kernel;
+use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Routing\Router;
+use ReflectionClass;
 
 class FakeMiddleware
 {
-    public function __construct(Application $app, $removeMiddlewares, $stubRouteMiddlewares)
+    public function __construct(Application $app, $removeMiddlewares = [], $stubRouteMiddlewares = [])
     {
         $app->resolving(function (Kernel $kernel, $app) use ($removeMiddlewares, $stubRouteMiddlewares) {
 
@@ -20,25 +22,19 @@ class FakeMiddleware
 
             foreach ($currentMiddlewares as $key => $currentMiddleware) {
                 if (in_array($currentMiddleware, $removeMiddlewares)) {
-                    unset($currentMiddleware[$key]);
+                    unset($currentMiddlewares[$key]);
                 }
             }
 
             $property->setValue($kernel, $currentMiddlewares);
 
-            // stub route middleware
-            $routeProperty = $reflected->getProperty('routeMiddleware');
-            $routeProperty->setAccessible(true);
-
-            $routeMiddlewares = $routeProperty->getValue($kernel);
-
+            // route
+            $routerProperty = $reflected->getProperty('router');
+            $routerProperty->setAccessible(true);
+            $router = $routerProperty->getValue($kernel);
             foreach ($stubRouteMiddlewares as $stubRouteMiddleware) {
-                if (array_key_exists($stubRouteMiddleware, $routeMiddlewares)) {
-                    $routeMiddlewares[$stubRouteMiddleware] = 'Moon\FakeMiddleware\Middleware\StubRouteMiddleware';
-                }
+                $router->middleware($stubRouteMiddleware, 'Moon\FakeMiddleware\Middleware\StubRouteMiddleware');
             }
-
-            $routeProperty->setValue($kernel, $routeMiddlewares);
         });
     }
 }
