@@ -1,5 +1,7 @@
 # FakeMiddleware
 
+![](https://travis-ci.org/moon0326/FakeMiddleware.svg)
+
 A small Laravel 5 package that let you remove a global middleware or bypass a route middleware in a testing environment.
 
 ## Installation
