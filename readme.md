@@ -4,7 +4,7 @@ A small Laravel 5 package that let you remove a global middleware or bypass a ro
 
 ## Installation
 ```
-composer require --dev "moon/fakemiddleware": "1.0"
+composer require --dev "moon/fakemiddleware": "1.1"
 ```
 ## Usage
 
