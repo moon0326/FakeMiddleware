@@ -25,6 +25,7 @@ public function createApplication()
 
     // This will remove ExternalOAuthVerifier and repalce auth middleware
     // with a fake middleware
+    // function __construct(Application $app, $globalMiddlewares, $routeMiddlewares);
     new FakeMiddleware($app, ['App\Http\Middleware\ExternalOAuthVerifier'], ['auth']);
 
     return $app;
