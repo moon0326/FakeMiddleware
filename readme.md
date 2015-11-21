@@ -7,7 +7,7 @@ This package simplifies the process.
 
 ## Installation
 ```
-composer require --dev "moon/fakemiddleware": "1.0.1"
+composer require --dev "moon/fakemiddleware": "1.1"
 ```
 ## Usage
 
